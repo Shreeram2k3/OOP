@@ -93,18 +93,25 @@ public class StudentHandler {
 
     public void removeStudent()
     {
+        if(arr.isEmpty())
+        {
+            System.out.println("The DataBase is Empty");
+            return;
+        }
+
         System.out.println("Enter the Student id You want to Remove:");
         int inpId= inp.nextInt();
 
-        for(Student i: arr)
-        {
-            if(inpId==i.getId())
+        for (int i = 0; i <arr.size() ; i++) {
+
+            if(inpId==arr.get(i).getId())
             {
-                System.out.println(i);
-                arr.remove(i);
+                System.out.println(arr.get(i));
+                arr.remove(arr.get(i));
                 System.out.println("Student removed Succesfully");
                 return;
             }
+
         }
         System.out.println("No Such Student Found");
     }
