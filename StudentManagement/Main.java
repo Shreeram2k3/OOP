@@ -17,12 +17,13 @@ public class Main {
             System.out.println("2. View All Students");
             System.out.println("3. Get one Student Details");
             System.out.println("4. Remove a Student");
-            System.out.println("5. Exit");
+            System.out.println("5. Update a Student");
+            System.out.println("6. Exit");
             System.out.println("Enter an Option: ");
 
 
-            String option = inp.next();
-            inp.nextLine();
+            String option = inp.nextLine();
+
 
             switch (option)
             {
@@ -34,7 +35,9 @@ public class Main {
 
                 case "4"-> operations.removeStudent();
 
-                case "5" -> {
+                case "5" ->operations.updateStudentDetails();
+
+                case "6" -> {
                     System.out.println("-----------------------Thank You!----------------------------");
                 return;
                 }
