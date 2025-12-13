@@ -11,6 +11,7 @@ This project demonstrates Object-Oriented Programming (OOP) concepts and in-memo
 - View all students
 - View a single student by ID
 - Remove a student by ID
+- Update Student Details
 - Auto-incremented unique student ID
 - Menu-driven console interface
 
@@ -53,7 +54,8 @@ StudentManagement/
 2. View All Students
 3. Get one Student Details
 4. Remove a Student
-5. Exit  
+5. Update a Student
+6. Exit  
    Enter an Option:
 
 ---
