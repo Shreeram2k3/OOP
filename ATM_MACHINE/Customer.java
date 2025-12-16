@@ -57,12 +57,7 @@ public class Customer {
         this.balance = balance;
     }
 
-    public static String header() {
-        return String.format(
-                "| %-12s | %-15s | %-12s | %-10s | %-10s |",
-                "Customer ID", "Customer Name", "Acc No.", "PIN", "Balance"
-        );
-    }
+
     @Override
     public String toString() {
         return String.format(
