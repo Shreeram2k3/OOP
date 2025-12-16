@@ -30,12 +30,12 @@
   - `Remove a student by ID`,
   - `Update Student Details`
 
-    
+---
 
 
   > 3.) [ATM_MACHINE](https://github.com/Shreeram2k3/OOP/tree/main/ATM_MACHINE) `ZOHO question` 
 - This is a ZOHO interview Question Asked in `Advanced coding Round 3`
-- For features & constraints  [Readme](https://github.com/Shreeram2k3/OOP/tree/main/ATM_MACHINE)
+  - For features & constraints  [Readme](https://github.com/Shreeram2k3/OOP/tree/main/ATM_MACHINE)
  
 
 
