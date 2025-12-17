@@ -33,6 +33,13 @@ public class AtmController {
         fiveHundredsCount += 100*cash;
         thousandsCount += 20*cash;
 
+        System.out.println(".........CASH LOADING.........\n"+"NOTES COUNT: \n"+
+                            getHundredsCount()+" * 100 Rupees,\n"+
+                           getFiveHundredsCount()+" * 500 Rupees,\n"+
+                            getThousandsCount()+" * 100 Rupees,\n"+"------------------------------------"+"\n"+
+                            "TOTAL = Rs. "+getAtmBalance()+" "+" Available in ATM"
+        );
+
     }
 
     public double getAtmBalance() {
