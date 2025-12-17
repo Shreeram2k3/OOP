@@ -123,10 +123,40 @@ public class CustomerController {
         }
         return null;
     }
-
+//1.check Customer Balance
     public void checkBalance(Customer i)
     {
         System.out.println("BALANCE: "+i.getBalance());
     }
+
+
+//4. Mini Statement
+    public void miniStatement(Customer i)
+    {
+        printtransHeader();
+
+        if(!i.getTransactions().isEmpty())
+        {
+            System.out.println(i.getTransactions());
+        }
+        else {
+            System.out.println("---------------No Transactions Found---------------");
+        }
+
+
+
+    }
+
+    //    header format for mini statement
+        public static void printtransHeader() {
+            System.out.println(
+                    "| TransId  | Description               | Type   |   Amount |"
+            );
+            System.out.println(
+                    "---------------------------------------------------------------"
+            );
+        }
+
+
 
 }

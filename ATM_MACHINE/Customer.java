@@ -1,5 +1,8 @@
 package ATM_MACHINE;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Customer {
 
     private int customerId;
@@ -7,6 +10,7 @@ public class Customer {
     private long accNumber;
     private String pin;
     private double balance;
+    private List<Transaction> transactions = new ArrayList<>();
 
     Customer(int customerId,String customerName, long accNumber, String pin, double balance)
     {
@@ -57,6 +61,13 @@ public class Customer {
         this.balance = balance;
     }
 
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
 
     @Override
     public String toString() {

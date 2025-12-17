@@ -94,7 +94,7 @@ public class AtmController {
 //
 //                case "3" -> cust.transferMoney();
 //
-//                case "4" -> cust.transferMoney();
+                case "4" -> cust.miniStatement(i);
 
                 case "5" ->{
                     System.out.println("--------Thank you for Banking with us !--------");
