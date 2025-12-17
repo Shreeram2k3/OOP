@@ -123,11 +123,14 @@ public class CustomerController {
         }
         return null;
     }
+
 //1.check Customer Balance
-    public void checkBalance(Customer i)
+    public double checkBalance(Customer i)
     {
         System.out.println("BALANCE: "+i.getBalance());
+        return i.getBalance();
     }
+
 
 
 //4. Mini Statement
@@ -156,6 +159,8 @@ public class CustomerController {
                     "---------------------------------------------------------------"
             );
         }
+
+
 
 
 

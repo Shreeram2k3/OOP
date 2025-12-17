@@ -90,7 +90,7 @@ public class AtmController {
             {
                 case "1" -> cust.checkBalance(i);
 
-//                case "2" -> cust.withdrawMoney();
+                case "2" -> withdrawMoney(i);
 //
 //                case "3" -> cust.transferMoney();
 //
@@ -107,9 +107,52 @@ public class AtmController {
             }
         }
     }
-//    public void viewAtmBalance()
-//    {
-//        System.out.println("ATM BALANCE: "+atmBalance);
-//    }
+
+    //2. WithdrawMoney
+    public void withdrawMoney(Customer i)
+    {
+        //  should be *100 <=10,000
+        System.out.println("Enter the amount you want to Withdraw:");
+        long withAmount = inp.nextLong();
+        inp.nextLine();
+
+        if(isValidWithdrawal(i,withAmount))
+        {
+            //calculate Notes to dispence
+//            calculateNotes(withAmount);
+            System.out.println("calculating");
+        }
+
+
+    }
+
+    public boolean isValidWithdrawal(Customer i, long withAmount)
+    {
+        if(withAmount%100==0 && withAmount<=10000)
+        {
+            if(withAmount<= i.getBalance() )
+            {
+                if(withAmount<=getAtmBalance())
+                {
+                    return true;
+                }
+                else {
+                    System.out.println("InSufficient CASH in ATM");
+                    return false;
+                }
+            }
+
+            else
+            {
+                System.out.println("InSufficient Balance in Your Account");
+                return false;
+            }
+        }
+        else {
+            System.out.println("Enter a Valid Amount to Withdraw");
+        }
+
+        return false;
+    }
 
 }
