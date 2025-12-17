@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 public class AtmController {
 
-    private double atmBalance;
+
+    private int hundredsCount;
+    private int fiveHundredsCount;
+    private int thousandsCount;
+
     private CustomerController cust;
     Scanner inp;
     AtmController(Scanner inp,CustomerController cust)
@@ -19,12 +23,32 @@ public class AtmController {
         int cash = inp.nextInt();
         inp.nextLine();
 
-        setAtmBance(cash);
+        setAtmCashCount(cash);
     }
 
-    public void setAtmBance(int cash)
+    public void setAtmCashCount(int cash)
     {
-        atmBalance = 100000*cash;
+        //denominations
+        hundredsCount += 300*cash;
+        fiveHundredsCount += 100*cash;
+        thousandsCount += 20*cash;
+
+    }
+
+    public double getAtmBalance() {
+        return (hundredsCount *100)+(fiveHundredsCount *500)+(thousandsCount *1000);
+    }
+
+    public int getHundredsCount() {
+        return hundredsCount;
+    }
+
+    public int getFiveHundredsCount() {
+        return fiveHundredsCount;
+    }
+
+    public int getThousandsCount() {
+        return thousandsCount;
     }
 
     public void viewOperations()
