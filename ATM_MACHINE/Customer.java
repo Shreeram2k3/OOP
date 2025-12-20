@@ -69,6 +69,14 @@ public class Customer {
         this.transactions = transactions;
     }
 
+    public void addTransaction(Transaction t) {
+        if (transactions.size() == 10) {
+            transactions.remove(0); // keep last 10
+        }
+        transactions.add(t);
+    }
+
+
     @Override
     public String toString() {
         return String.format(

@@ -108,25 +108,27 @@ public class AtmController {
         }
     }
 
-    //2. WithdrawMoney
+//2. WithdrawMoney
+
+
     public void withdrawMoney(Customer i)
     {
         //  should be *100 <=10,000
         System.out.println("Enter the amount you want to Withdraw:");
-        long withAmount = inp.nextLong();
+        int withAmount = inp.nextInt();
         inp.nextLine();
 
         if(isValidWithdrawal(i,withAmount))
         {
             //calculate Notes to dispence
-//            calculateNotes(withAmount);
-            System.out.println("calculating");
+            calculateNotes(withAmount,i);
+
         }
 
 
     }
 
-    public boolean isValidWithdrawal(Customer i, long withAmount)
+    public boolean isValidWithdrawal(Customer i, int withAmount)
     {
         if(withAmount%100==0 && withAmount<=10000)
         {
@@ -154,5 +156,107 @@ public class AtmController {
 
         return false;
     }
+
+    public void calculateNotes(int reqAmount,Customer i)
+    {
+        if(reqAmount>=5000)
+        {
+            calculateRule1(reqAmount,i);
+        }
+        else
+        {
+            calulateRule2(reqAmount,i);
+        }
+    }
+    public void calculateRule1(int reqAmount,Customer i)
+    {
+          int usedThousands;
+         int usedFiveHundreds;
+         int usedHundreds;
+        // max one 1000
+
+        usedThousands =Math.min(1,thousandsCount);
+        reqAmount-= usedThousands*1000;
+
+        // use as many 500s
+        usedFiveHundreds =Math.min(reqAmount/500,fiveHundredsCount);
+        reqAmount-= usedFiveHundreds*500;
+
+        //max ten hundreds;
+        usedHundreds = Math.min(reqAmount/100,10);
+        usedHundreds =Math.min(usedHundreds,hundredsCount);
+        reqAmount -= usedHundreds*100;
+
+        if (reqAmount != 0) {
+            System.out.println("Cannot dispense required denominations");
+            return;
+        }
+
+
+        dispenseMoney(usedHundreds,usedFiveHundreds,usedThousands,i);
+
+    }
+
+    public void calulateRule2(int reqAmount,Customer i)
+    {
+        int usedThousands;
+        int usedFiveHundreds;
+        int usedHundreds;
+        // max 0 1000
+
+        usedThousands =0;
+
+        // max 8 500s
+        usedFiveHundreds = Math.min(reqAmount / 500, 8);
+        usedFiveHundreds = Math.min(usedFiveHundreds, fiveHundredsCount);
+
+        reqAmount-= usedFiveHundreds*500;
+
+        //rest hundreds;
+        usedHundreds = Math.min(reqAmount/100,hundredsCount);
+
+        reqAmount -= usedHundreds*100;
+
+        if (reqAmount != 0) {
+            System.out.println("Cannot dispense required denominations");
+            return;
+        }
+
+
+        dispenseMoney(usedHundreds,usedFiveHundreds,usedThousands,i);
+    }
+
+    public void dispenseMoney(int usedHundreds, int usedFiveHundreds, int usedThousands, Customer i)
+    {
+        thousandsCount-=usedThousands;
+        fiveHundredsCount-=usedFiveHundreds;
+        hundredsCount-=usedHundreds;
+
+        int amount =1000*usedThousands+500*usedFiveHundreds+100*usedHundreds;
+        i.setBalance(i.getBalance()-amount);
+
+        System.out.println("Withdrawing.......: ");
+        System.out.println("100 * "+usedHundreds);
+        System.out.println("500 * "+usedFiveHundreds);
+        System.out.println("1000 * "+usedThousands);
+        System.out.println("Dispensed Amount: " + amount);
+
+        Transaction t = new Transaction(
+                /* id */ i.getTransactions().size() + 1,
+                "Withdraw from ATM",
+                "Debit",
+                amount
+        );
+
+        i.addTransaction(t);
+
+
+
+
+
+    }
+
+
+
 
 }
